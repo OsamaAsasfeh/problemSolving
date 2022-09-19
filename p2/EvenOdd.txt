@@ -1,0 +1,39 @@
+#includebitsstdc++.h
+#define FIO ios_basesync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+int main()
+{
+    FIO
+    int n,pos,num;
+    cinnpos;
+ int mid;
+    if(n%2==0)
+    {
+        mid=n2;
+
+        if(midpos)
+            num=pos2-1;
+
+
+        else num=(pos-mid)2;
+    }
+    else
+    {
+         mid=n2+1;
+        if(midpos)
+            num=pos2-1;
+
+        else num=(pos-mid)2;
+    }
+
+    coutnum;
+
+
+
+
+    return 0;
+}

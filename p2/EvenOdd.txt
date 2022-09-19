@@ -1,5 +1,5 @@
-#includebitsstdc++.h
-#define FIO ios_basesync_with_stdio(0);cin.tie(0);
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
 typedef long long ll;
 const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
 const ll LOO = 0x3f3f3f3f3f3f3f3f;
@@ -8,29 +8,29 @@ using namespace std;
 int main()
 {
     FIO
-    int n,pos,num;
-    cinnpos;
- int mid;
+    long long  n,pos,num;
+    cin>>n>>pos;
+long long mid;
     if(n%2==0)
     {
-        mid=n2;
+        mid=n/2;
 
-        if(midpos)
-            num=pos2-1;
+        if(mid>=pos)
+            num=pos*2-1;
 
 
-        else num=(pos-mid)2;
+        else num=(pos-mid)*2;
     }
     else
     {
-         mid=n2+1;
-        if(midpos)
-            num=pos2-1;
+         mid=n/2+1;
+        if(mid>=pos)
+            num=pos*2-1;
 
-        else num=(pos-mid)2;
+        else num=(pos-mid)*2;
     }
 
-    coutnum;
+    cout<<num;
 
 
 

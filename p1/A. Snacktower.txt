@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+int main()
+{
+    FIO
+    int n;
+    cin>>n;
+    vector<int>ls(n+1);
+    for(int i=0;i<n;i++)cin>>ls[i];
+    vector<int>vis(n+1,0);
+    int curnt=n;
+    for(int i=0;i<=n;i++)
+    {
+        vis[ls[i]]=1;
+        while(vis[curnt]&&curnt>0)
+            cout<<curnt--<<" ";
+        cout<<'\n';
+
+    }
+
+
+
+
+
+    return 0;
+}

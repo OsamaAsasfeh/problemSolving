@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+void eraseAllSubStr(string & mainStr, const string & toErase)
+{
+    size_t pos = std::string::npos;
+
+    while ((pos  = mainStr.find(toErase))!= std::string::npos)
+    {
+        mainStr.erase(pos, toErase.length());
+        if(pos!=0)
+            mainStr.insert(pos," ");
+    }
+}
+
+int main()
+{
+    FIO
+    int n;
+    cin>>n;
+    vector<vector<char>>st(n,vector<char>(n));
+
+set<char>vis;
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+        {
+            cin>>st[i][j];
+            vis.insert(st[i][j]);
+
+        }
+    bool flag=true;
+
+
+    for(int i=0; i<n; i++)
+
+        if(st[i][i]!=st[n/2][n/2]||st[i][n-1-i]!=st[n/2][n/2])
+        {
+            flag=false;
+            break;
+        }
+    for( int i=0; i<n; i++)
+        for(int j = 0; j < n; j++)
+        {
+            if(i != j && j != (n - (i + 1)))
+            {
+                if(st[i][j] != st[0][1])
+                {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+
+    if(!flag||vis.size()!=2)
+        cout<<"NO";
+    else cout<<"YES";
+
+
+
+
+    return 0;
+}

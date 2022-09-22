@@ -1,0 +1,104 @@
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+void eraseAllSubStr(string & mainStr, const string & toErase)
+{
+    size_t pos = std::string::npos;
+
+    while ((pos  = mainStr.find(toErase))!= std::string::npos)
+    {
+        mainStr.erase(pos, toErase.length());
+        if(pos!=0)
+            mainStr.insert(pos," ");
+    }
+}
+
+float power(float x, int y)
+{
+    float temp;
+    if (y == 0)
+        return 1;
+    temp = power(x, y / 2);
+    if (y % 2 == 0)
+        return temp * temp;
+    else
+    {
+        if (y > 0)
+            return x * temp * temp;
+        else
+            return (temp * temp) / x;
+    }
+}
+bool isPrime(int n)
+{
+    // Corner cases
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
+
+    // This is checked so that we can skip
+    // middle five numbers in below loop
+    if (n%2 == 0 || n%3 == 0) return false;
+
+    for (int i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+            return false;
+
+    return true;
+}
+
+// Function to return the smallest
+// prime number greater than N
+int nextPrime(int N)
+{
+
+    // Base case
+    if (N <= 1)
+        return 2;
+
+    int prime = N;
+    bool found = false;
+
+    // Loop continuously until isPrime returns
+    // true for a number greater than n
+    while (!found)
+    {
+        prime++;
+
+        if (isPrime(prime))
+            found = true;
+    }
+
+    return prime;
+}
+float log_a_to_base_2(float a)
+{
+    return (float)log2(a) / (float)log2(2);
+}
+
+int main()
+{
+
+    FIO
+    int n,m;
+    cin>>n>>m;
+    int sum=0;
+    for( int i=0; i<n; i++)
+    {
+        int v1,v2;
+        cin>>v1>>v2;
+        sum+=v2-v1+1;
+    }
+    sum%=m;
+    if(sum!=0)
+        sum=m-sum;
+
+
+    cout<<sum;
+
+    return 0;
+
+}

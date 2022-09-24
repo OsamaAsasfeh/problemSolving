@@ -1,0 +1,171 @@
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+void eraseAllSubStr(string & mainStr, const string & toErase)
+{
+    size_t pos = std::string::npos;
+
+    while ((pos  = mainStr.find(toErase))!= std::string::npos)
+    {
+        mainStr.erase(pos, toErase.length());
+        if(pos!=0)
+            mainStr.insert(pos," ");
+    }
+}
+
+float power(float x, int y)
+{
+    float temp;
+    if (y == 0)
+        return 1;
+    temp = power(x, y / 2);
+    if (y % 2 == 0)
+        return temp * temp;
+    else
+    {
+        if (y > 0)
+            return x * temp * temp;
+        else
+            return (temp * temp) / x;
+    }
+}
+bool isPrime(int n)
+{
+    // Corner cases
+    if (n <= 1)  return false;
+    if (n <= 3)  return true;
+
+    // This is checked so that we can skip
+    // middle five numbers in below loop
+    if (n%2 == 0 || n%3 == 0) return false;
+
+    for (int i=5; i*i<=n; i=i+6)
+        if (n%i == 0 || n%(i+2) == 0)
+            return false;
+
+    return true;
+}
+
+// Function to return the smallest
+// prime number greater than N
+int nextPrime(int N)
+{
+
+    // Base case
+    if (N <= 1)
+        return 2;
+
+    int prime = N;
+    bool found = false;
+
+    // Loop continuously until isPrime returns
+    // true for a number greater than n
+    while (!found)
+    {
+        prime++;
+
+        if (isPrime(prime))
+            found = true;
+    }
+
+    return prime;
+}
+float log_a_to_base_2(float a)
+{
+    return (float)log2(a) / (float)log2(2);
+}
+vector<int>v;
+vector<pair<int,int>>frq(101);
+void left(int pos)
+{
+    if(pos==0)return ;
+    for(int i=pos; i>=0; i--)
+    {
+        frq[pos-i].first+=1;
+        frq[pos-i].second=v[i];
+    }
+
+}
+
+void rt(int pos)
+{
+    if(pos==v.size()-1)return ;
+    for(int i=pos; i<v.size()-1; i++)
+    {
+        frq[i-pos].first+=1;
+        frq[i-pos].second=v[i];
+    }
+
+}
+bool re(pair<int,int>p1,pair<int,int>p2)
+{
+
+    return p2.second<p1.second;
+
+}
+bool cmp(pair<char, int>& a,
+         pair<char, int>& b)
+{
+    return a.second < b.second;
+}
+
+
+void sort_(unordered_map<char, int>& M)
+{
+
+
+    vector<pair<char, int> > A;
+
+
+    for (auto it : M)
+    {
+        A.push_back(it);
+    }
+
+
+    sort(A.begin(), A.end(), cmp);
+    for (auto it : A)
+    {
+
+        cout << it.first ;
+    }
+
+
+}
+int main()
+{
+
+    FIO
+    char f,s,l;
+    unordered_map<char,int>mp;
+    bool flag=false;
+    for(int i=0; i<3; i++)
+    {
+        cin>>f>>s>>l;
+        if(s=='<')
+        {
+            mp[l]++;
+            mp[f]--;
+            if(mp[l]==2)flag=true;
+        }
+        else
+        {
+            mp[f]++;
+            mp[l]--;
+            if(mp[f]==2)flag=true;
+        }
+    }
+
+
+    if(flag)
+    {
+        sort_(mp);
+    }
+
+    else cout<<"Impossible";
+    return 0;
+}

@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);
+typedef long long ll;
+const int MOD = 1e9 + 7,OO=0x3f3f3f3f;
+const ll LOO = 0x3f3f3f3f3f3f3f3f;
+const long double EPS = 1e-8;
+using namespace std;
+ 
+ll re(ll ret[],int f,int e){
+if( f==0)return ret[e];
+return ret[e]-ret[f-1];
+ 
+ 
+}
+int main()
+{
+    FIO
+    int n;
+    cin>>n;
+    ll pre1[n+5]{0};
+   ll pre2[n+5]{0};
+    ll v1[n+5];
+    for(int i=0; i<n; i++)
+    {
+        cin>>v1[i];
+        pre1[i]=i==0?v1[0]:v1[i]+pre1[i-1];
+    }
+ 
+    sort(v1,v1+n);
+    for(int i=0; i<n; i++)
+        pre2[i]=i==0?v1[0]:v1[i]+pre2[i-1];
+ 
+    int m,l,f,e;
+    cin>>m;
+ 
+    while(m--)
+    {
+        cin>>l>>f>>e;
+ 
+        f--,e--;
+            cout<<(l==1?re(pre1,f,e):re(pre2,f,e))<<'\n';
+ 
+    }
+ 
+ 
+    return 0;
+}
